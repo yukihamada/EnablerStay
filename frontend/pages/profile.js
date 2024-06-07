@@ -26,5 +26,21 @@ const Profile = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  // サーバーサイドで必要なデータを取得する処理をここに追加
+  const res = await fetch('https://api.enabler.cc/profile', {
+    headers: {
+      'Authorization': \`Bearer ${context.req.cookies.token}\`
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      user: data
+    }
+  };
+};
+
 export default Profile;
 

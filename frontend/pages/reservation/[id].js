@@ -34,5 +34,21 @@ const ReservationDetail = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
+  const res = await fetch(\\`https://api.enabler.cc/reservation/${id}\\`, {
+    headers: {
+      'Authorization': \\`Bearer ${context.req.cookies.token}\\`
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      reservation: data
+    }
+  };
+};
+
 export default ReservationDetail;
 

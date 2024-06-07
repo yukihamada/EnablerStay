@@ -32,5 +32,21 @@ const PaymentDetail = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
+  const res = await fetch(\\`https://api.enabler.cc/payment/${id}\\`, {
+    headers: {
+      'Authorization': \\`Bearer ${context.req.cookies.token}\\`
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      payment: data
+    }
+  };
+};
+
 export default PaymentDetail;
 

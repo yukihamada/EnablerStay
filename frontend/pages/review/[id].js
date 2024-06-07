@@ -32,5 +32,21 @@ const ReviewDetail = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const { id } = context.params;
+  const res = await fetch(\\`https://api.enabler.cc/review/${id}\\`, {
+    headers: {
+      'Authorization': \\`Bearer ${context.req.cookies.token}\\`
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      review: data
+    }
+  };
+};
+
 export default ReviewDetail;
 

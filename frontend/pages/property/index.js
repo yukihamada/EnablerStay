@@ -27,5 +27,21 @@ const PropertyList = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  // サーバーサイドで必要なデータを取得する処理をここに追加
+  const res = await fetch('https://api.enabler.cc/property', {
+    headers: {
+      'Authorization': \`Bearer ${context.req.cookies.token}\`
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      properties: data
+    }
+  };
+};
+
 export default PropertyList;
 

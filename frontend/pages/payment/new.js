@@ -45,12 +45,15 @@ const NewPayment = () => {
           type="text"
           placeholder="Reservation ID"
           value={reservationId}
-          onChange={(e) => setReservationId(e.target.value)}
-        />
-        <button type="submit">Pay</button>
-      </form>
-    </div>
-  );
+
+export const getServerSideProps = async (context) => {
+  // サーバーサイドで必要なデータを取得する処理をここに追加
+  const initialEmail = context.query.email || '';
+  return {
+    props: {
+      initialEmail
+    }
+  };
 };
 
 export default NewPayment;

@@ -29,5 +29,20 @@ const MessageList = () => {
   );
 };
 
+export const getServerSideProps = async (context) => {
+  const res = await fetch('https://api.enabler.cc/message', {
+    headers: {
+      'Authorization': \`Bearer ${context.req.cookies.token}\`
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      messages: data
+    }
+  };
+};
+
 export default MessageList;
 

@@ -32,4 +32,37 @@ EnablerStayは、VercelとCloudflareを利用して高速に動作する物件�
 ## ライセンス
 
 このプロジェクトはMITライセンスの下で公開されています。
+## セットアップ
+
+1. リポジトリをクローンします。
+   \`\`\`bash
+   git clone https://github.com/yukihamada/EnablerStay.git
+   cd EnablerStay/frontend
+   \`\`\`
+
+2. 必要な依存関係をインストールします。
+   \`\`\`bash
+   npm install
+   \`\`\`
+
+3. 開発サーバーを起動します。
+   \`\`\`bash
+   npm run dev
+   \`\`\`
+
+4. ブラウザで \`http://localhost:3000\` にアクセスして、アプリケーションを確認します。
+
+## デプロイ
+
+1. ビルドを行います。
+   \`\`\`bash
+   npm run build
+   \`\`\`
+
+2. サーバーを起動します。
+   \`\`\`bash
+   npm start
+   \`\`\`
+
+3. 本番環境で \`http://localhost:3000\` にアクセスして、アプリケーションを確認します。
 

@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
 
-const Login = () => {
-  const [email, setEmail] = useState('');
+const Login = ({ initialEmail }) => {
+  const [email, setEmail] = useState(initialEmail || '');
   const [password, setPassword] = useState('');
   const router = useRouter();
 
@@ -43,6 +43,15 @@ const Login = () => {
       </form>
     </div>
   );
+};
+
+export const getServerSideProps = async (context) => {
+  // サーバーサイドで必要なデータを取得する処理をここに追加
+  return {
+    props: {
+      initialEmail: '', // 必要に応じて初期データを設定
+    },
+  };
 };
 
 export default Login;

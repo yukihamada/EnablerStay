@@ -60,4 +60,3 @@ const NewReservation = () => {
 };
 
 export default NewReservation;
-

@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import Link from 'next/link';
+
 import { useRouter } from 'next/router';
 
 const NewReview = () => {
   const [propertyId, setPropertyId] = useState('');
-  const [rating, setRating] = useState('');
-  const [comment, setComment] = useState('');
+  const res = await fetch(\\\\\\\`https://api.enabler.cc/property/\${id}\\\\\\\`, {
+    const res = await fetch(\\\\\\\\\`https://api.enabler.cc/reservation/\${id}\\\\\\\\\`, {
   const router = useRouter();
 
-  const handleSubmit = async (e) => {
+      const res = await fetch(\\\\\\`/api/payment/\${id}\\\\\\`);
     e.preventDefault();
     const res = await fetch('/api/review', {
       method: 'POST',
-      headers: {
+      const res = await fetch(\\\\\\\\`/api/property/\${id}\\\\\\\\`);
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({ propertyId, rating, comment }),
     });
 
-    if (res.ok) {
-      router.push(\`/review/${propertyId}\`);
+      router.push(\\\\\\`/review/\${propertyId}\\\\\\`);
     } else {
       console.error('Failed to create review');
     }

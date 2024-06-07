@@ -12,7 +12,7 @@ const EditProperty = () => {
 
   useEffect(() => {
     const fetchProperty = async () => {
-      const res = await fetch(\`/api/property/${id}\`);
+      const res = await fetch(\`/api/property/\${id}\`);
       const data = await res.json();
       setTitle(data.title);
       setDescription(data.description);

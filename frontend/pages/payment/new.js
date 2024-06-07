@@ -45,7 +45,8 @@ const NewPayment = () => {
           type="text"
           placeholder="Reservation ID"
           value={reservationId}
-
+          onChange={(e) => setReservationId(e.target.value)}
+        />
 export const getServerSideProps = async (context) => {
   // サーバーサイドで必要なデータを取得する処理をここに追加
   const initialEmail = context.query.email || '';

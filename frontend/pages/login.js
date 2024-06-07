@@ -1,7 +1,18 @@
 import React, { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
+
+export async function getServerSideProps({ locale }) {
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
 
 const Login = ({ initialEmail }) => {
+  const { t } = useTranslation('common');
   const [email, setEmail] = useState(initialEmail || '');
   const [password, setPassword] = useState('');
   const router = useRouter();
@@ -25,7 +36,7 @@ const Login = ({ initialEmail }) => {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>{t('login')}</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="email"
@@ -39,20 +50,10 @@ const Login = ({ initialEmail }) => {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">Login</button>
+        <button type="submit">{t('login')}</button>
       </form>
     </div>
   );
 };
 
-export const getServerSideProps = async (context) => {
-  // サーバーサイドで必要なデータを取得する処理をここに追加
-  return {
-    props: {
-      initialEmail: '', // 必要に応じて初期データを設定
-    },
-  };
-};
-
 export default Login;
-

@@ -1,22 +1,28 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const PropertyDetail = () => {
-  const [property, setProperty] = useState(null);
-  const router = useRouter();
-  const { id } = router.query;
-
-  useEffect(() => {
-    const fetchProperty = async () => {
-      const res = await fetch(\`/api/property/${id}\`);
-      const data = await res.json();
-      setProperty(data);
-    };
-
-    if (id) {
-      fetchProperty();
+export async function getServerSideProps({ locale, params, req }) {
+  const { id } = params;
+  const res = await fetch(\`https://api.enabler.cc/property/\${id}\`, {
+    headers: {
+      'Authorization': \`Bearer \${req.cookies.token}\`
     }
-  }, [id]);
+  });
+    }
+  });
+  const data = await res.json();
+
+  return {
+    props: {
+      property: data,
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
+
+const PropertyDetail = ({ property }) => {
+  const { t } = useTranslation('common');
 
   if (!property) {
     return <div>Loading...</div>;
@@ -27,26 +33,10 @@ const PropertyDetail = () => {
       <h1>{property.title}</h1>
       <p>{property.description}</p>
       <p>{property.address}</p>
-      <p>Price per night: ${property.price}</p>
-      <p>Max guests: {property.maxGuests}</p>
+      <p>{t('price_per_night')}: ${property.price}</p>
+      <p>{t('max_guests')}: {property.maxGuests}</p>
     </div>
   );
-};
-
-export const getServerSideProps = async (context) => {
-  const { id } = context.params;
-  const res = await fetch(\`https://api.enabler.cc/property/${id}\`, {
-    headers: {
-      'Authorization': \`Bearer ${context.req.cookies.token}\`
-    }
-  });
-  const data = await res.json();
-
-  return {
-    props: {
-      property: data
-    }
-  };
 };
 
 export default PropertyDetail;

@@ -1,89 +1,80 @@
 # EnablerStay
 
-EnablerStayは、VercelとCloudflareを利用して高速に動作する物件予約および掲載サービスです。このサービスは、物件のフルサポート付きで簡単に予約および掲載が可能です。
+EnablerStayは、OpenDevinを利用して自律的に開発されるプロジェクトであり、次世代の宿泊体験を提供することを目指しています。AI技術を活用して、ホストとゲストの体験を大幅に向上させることを目指しています。
 
-## プロジェクト構成
+## 始めに
 
-- \`frontend/\`: クライアントサイドのコード。Next.jsを使用しており、SSR（サーバーサイドレンダリング）をサポートしています。
-- \`enablerstay-api/\`: サーバーサイドのコード。Cloudflare Workersを使用しており、高速でスケーラブルなAPIを提供します。
+まず、プロジェクトをGitHubからクローンし、frontendフォルダに移動して開発サーバーを起動してください。
 
-## 環境変数
+```bash
+# プロジェクトのクローン
+git clone https://github.com/yukihamada/EnablerStay.git
 
-以下の環境変数を設定する必要があります：
+# frontendフォルダに移動
+cd EnablerStay/frontend
 
-- \`CF_API_KEY\`: Cloudflare APIキー
-- \`CF_ACCOUNT_ID\`: CloudflareアカウントID
-- \`CF_NAMESPACE_ID\`: Cloudflare Namespace ID
-- \`CF_WORKER_ENV\`: Cloudflare Worker環境
-- \`JWT_SECRET\`: JWTシークレットキー
-- \`CF_D1_DB_URL\`: Cloudflare D1データベースURL
+# 開発サーバーを起動
+npm install
+npm run dev
+```
 
-環境変数は、\`.env\` ファイルに設定することをお勧めします。例：
+ブラウザで[http://localhost:3000](http://localhost:3000)を開き、結果を確認してください。
 
-\`\`\`
-CF_API_KEY=your_cloudflare_api_key
-CF_ACCOUNT_ID=your_cloudflare_account_id
-CF_NAMESPACE_ID=your_cloudflare_namespace_id
-CF_WORKER_ENV=your_cloudflare_worker_env
-JWT_SECRET=your_jwt_secret
-CF_D1_DB_URL=your_cloudflare_d1_db_url
-\`\`\`
+`app/page.tsx`を修正することで、ページの編集を開始できます。ファイルを編集すると、ページが自動的に更新されます。
 
-## セットアップ
+このプロジェクトでは、[`next/font`](https://nextjs.org/docs/basic-features/font-optimization)を使用して、GoogleフォントのInterを自動的に最適化およびロードしています。
 
-### フロントエンド
+## OpenDevinを使った開発方法
 
-1. リポジトリをクローンします。
-   \`\`\`bash
-   git clone https://github.com/yukihamada/EnablerStay.git
-   cd EnablerStay/frontend
-   \`\`\`
+以下のプロンプトをOpenDevin上で実行してください：
 
-2. 必要な依存関係をインストールします。
-   \`\`\`bash
-   npm install
-   \`\`\`
+```bash
+$PROJECT=EnablerStay
+$USER=yukihamada
 
-3. 開発サーバーを起動します。
-   \`\`\`bash
-   npm run dev
-   \`\`\`
+あなたは天才エンジニアです。このプロジェクトの全体像とコードを理解し、エキスパートの視点で最高のコードを書いてください。非対話モードで作業を進め、Next.jsを使用し、SSR（サーバーサイドレンダリング）で実装してください。
 
-### バックエンド
+まず、/{$PROJECT}/README.md から読み始め、README.md を常に誰にでもわかりやすく、このサービスが分かりやすく、使いやすく、貢献しやすいものに改善してください。もしワークスペースにプロジェクトのフォルダがなければ、GitHubからクローンしてください。
 
-1. \`enablerstay-api\`ディレクトリに移動します。
-   \`\`\`bash
-   cd ../enablerstay-api
-   \`\`\`
+仮想環境は不要です。VercelやWrangler、JavaScriptのインストールや `npx create-next-app@latest`、`next dev`の実行はこちらで行います。Mac上での実行スクリプトについて指示してください。
 
-2. 必要な依存関係をインストールします。
-   \`\`\`bash
-   npm install
-   \`\`\`
+あなたのワークスペースは /{$PROJECT} で、私のワークスペースは `/Users/yuki/workspace/{$PROJECT}` です。プロジェクトのフォルダ以外にはこちらからの指定がない限り、保存や変更は行わないでください。
 
-3. Cloudflare Workersをデプロイします。
-   \`\`\`bash
-   wrangler publish
-   \`\`\`
+NEXT.jsはすでに http://localhost:3001/ で立ち上がっていますので、適宜確認をしてください。
 
-## 貢献方法
+https://github.com/{$USER}/{$PROJECT}
+GitHubキー：[************************]
 
-1. このリポジトリをフォークします。
-2. 新しいブランチを作成します。
-   \`\`\`bash
-   git checkout -b feature/your-feature-name
-   \`\`\`
-3. 変更をコミットします。
-   \`\`\`bash
-   git commit -m 'Add some feature'
-   \`\`\`
-4. ブランチにプッシュします。
-   \`\`\`bash
-   git push origin feature/your-feature-name
-   \`\`\`
-5. プルリクエストを作成します。
+```
 
-## ライセンス
+## OpenDevinのセットアップ方法
 
-このプロジェクトはMITライセンスの下でライセンスされています。詳細については、LICENSEファイルを参照してください。
+OpenDevinのセットアップは以下のリンクから詳細なガイドを確認できます：
 
+- [OpenDevinセットアップガイド](https://opendevin.ai/setup) 🌐
+
+簡単な手順としては、以下の通りです：
+
+1. OpenDevinの公式サイトにアクセスします。
+2. 指示に従ってアカウントを作成します。
+3. プロジェクトをインポートし、ワークスペースを設定します。
+4. 上記のプロンプトを実行して開発を開始します。
+
+## 詳細情報
+
+Next.jsについて詳しく知るには、以下のリソースをご覧ください：
+
+- [Next.jsドキュメント](https://nextjs.org/docs) - Next.jsの機能やAPIについて学ぶ。
+- [Learn Next.js](https://nextjs.org/learn) - インタラクティブなNext.jsのチュートリアル。
+
+Next.jsのGitHubリポジトリもチェックしてみてください - フィードバックや貢献をお待ちしています！
+
+## Vercelでデプロイ
+
+Next.jsアプリをデプロイする最も簡単な方法は、Next.jsのクリエーターが提供する[Vercelプラットフォーム](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme)を利用することです。
+
+詳細については、[Next.jsのデプロイメントドキュメント](https://nextjs.org/docs/deployment)をチェックしてください。
+
+---
+
+深呼吸して、世の中を変える可能性を信じて、EnablerStayを構築していきましょう。🚀✨

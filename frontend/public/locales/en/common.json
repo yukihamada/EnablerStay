@@ -1,0 +1,14 @@
+{
+  "title": "EnablerStay",
+  "home": "Home",
+  "about": "About",
+  "profile": "Profile",
+  "login": "Login",
+  "signup": "Sign Up",
+  "reservation": "Reservation",
+  "new_reservation": "New Reservation",
+  "property": "Property",
+  "new_property": "New Property",
+  "message": "Message",
+  "new_message": "New Message"
+}

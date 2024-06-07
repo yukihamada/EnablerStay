@@ -8,7 +8,7 @@ const PaymentDetail = () => {
 
   useEffect(() => {
     const fetchPayment = async () => {
-      const res = await fetch(\`/api/payment/${id}\`);
+      const res = await fetch(\`/api/payment/\${id}\`);
       const data = await res.json();
       setPayment(data);
     };
@@ -34,9 +34,11 @@ const PaymentDetail = () => {
 
 export const getServerSideProps = async (context) => {
   const { id } = context.params;
-  const res = await fetch(\\`https://api.enabler.cc/payment/${id}\\`, {
-    headers: {
-      'Authorization': \\`Bearer ${context.req.cookies.token}\\`
+      const res = await fetch(\`https://api.enabler.cc/payment/\${id}\`, {
+        headers: {
+          'Authorization': \`Bearer \${context.req.cookies.token}\`
+        }
+      });
     }
   });
   const data = await res.json();

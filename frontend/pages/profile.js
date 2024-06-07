@@ -1,83 +1,69 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useRouter } from 'next/router';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const Profile = () => {
-  const [user, setUser] = useState(null);
+export async function getServerSideProps(context) {
+  const { locale } = context;
+  return {
+    props: {
+      ...(await serverSideTranslations(locale, ['common'])),
+    },
+  };
+}
 
-  useEffect(() => {
-    const fetchUser = async () => {
-      const res = await fetch('/api/profile');
-      const data = await res.json();
-      setUser(data);
-    };
+const Profile = ({ initialEmail }) => {
+  const { t } = useTranslation('common');
+  const [email, setEmail] = useState(initialEmail || '');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
+  const router = useRouter();
 
-    fetchUser();
-  }, []);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setError('');
+    try {
+      const res = await fetch('/api/login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
-  if (!user) {
-    return <div>Loading...</div>;
-  }
+      if (res.ok) {
+        router.push('/profile');
+      } else {
+        const errorData = await res.json();
+        setError(errorData.message || 'Failed to log in');
+      }
+    } catch (err) {
+      setError('An unexpected error occurred');
+      console.error('Failed to log in:', err);
+    }
+  };
 
   return (
     <div>
-      <h1>Profile</h1>
-      <p>Username: {user.username}</p>
-      <p>Email: {user.email}</p>
-
+      <h1>{t('login')}</h1>
       <form onSubmit={handleSubmit}>
-        <label>
-          Username:
-          <input
-            type="text"
-            value={user.username}
-            onChange={(e) => setUser({ ...user, username: e.target.value })}
-          />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={user.email}
-            onChange={(e) => setUser({ ...user, email: e.target.value })}
-          />
-        </label>
-        <button type="submit">Update Profile</button>
+        <input
+          type="email"
+          placeholder="Email"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
+        <input
+          type="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        {error && <p style={{ color: 'red' }}>{error}</p>}
+        <button type="submit">{t('login')}</button>
       </form>
     </div>
   );
-
-  async function handleSubmit(e) {
-    e.preventDefault();
-    const res = await fetch('/api/profile', {
-      method: 'PUT',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(user),
-    });
-
-    if (res.ok) {
-      alert('Profile updated successfully');
-    } else {
-      alert('Failed to update profile');
-    }
-  }
-
-
-export const getServerSideProps = async (context) => {
-  // サーバーサイドで必要なデータを取得する処理をここに追加
-  const res = await fetch('https://api.enabler.cc/profile', {
-    headers: {
-      'Authorization': \`Bearer ${context.req.cookies.token}\`
-    }
-  });
-  const data = await res.json();
-
-  return {
-    props: {
-      user: data
-    }
-  };
 };
 
 export default Profile;
-

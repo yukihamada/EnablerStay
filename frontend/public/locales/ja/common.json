@@ -1,0 +1,14 @@
+{
+  "title": "EnablerStay",
+  "home": "ホーム",
+  "about": "アバウト",
+  "profile": "プロフィール",
+  "login": "ログイン",
+  "signup": "サインアップ",
+  "reservation": "予約",
+  "new_reservation": "新しい予約",
+  "property": "物件",
+  "new_property": "新しい物件",
+  "message": "メッセージ",
+  "new_message": "新しいメッセージ"
+}

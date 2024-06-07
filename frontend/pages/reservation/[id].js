@@ -1,22 +1,38 @@
-import React, { useEffect, useState } from 'react';
-import { useRouter } from 'next/router';
+import React from 'react';
+import { useTranslation } from 'next-i18next';
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
 
-const ReservationDetail = () => {
-  const [reservation, setReservation] = useState(null);
-  const router = useRouter();
-  const { id } = router.query;
+export async function getServerSideProps({ locale, params, req }) {
+  const { id } = params;
+  try {
+    const res = await fetch(\\`https://api.enabler.cc/reservation/\${id}\\`, {
+      headers: {
+        'Authorization': \\`Bearer \${req.cookies.token}\\`
+      }
+    });
+      }
+    });
+    const data = await res.json();
 
-  useEffect(() => {
-    const fetchReservation = async () => {
-      const res = await fetch(\\`/api/reservation/${id}\\`);
-      const data = await res.json();
-      setReservation(data);
+    return {
+      props: {
+        reservation: data,
+        ...(await serverSideTranslations(locale, ['common'])),
+      },
     };
+  } catch (error) {
+    console.error('Error fetching data:', error);
+    return {
+      props: {
+        reservation: null,
+        ...(await serverSideTranslations(locale, ['common'])),
+      },
+    };
+  }
+}
 
-    if (id) {
-      fetchReservation();
-    }
-  }, [id]);
+const ReservationDetail = ({ reservation }) => {
+  const { t } = useTranslation('common');
 
   if (!reservation) {
     return <div>Loading...</div>;
@@ -24,20 +40,20 @@ const ReservationDetail = () => {
 
   return (
     <div>
-      <h1>Reservation Detail</h1>
+      <h1>{t('reservation')} Detail</h1>
       <p>Property ID: {reservation.propertyId}</p>
       <p>Start Date: {reservation.startDate}</p>
       <p>End Date: {reservation.endDate}</p>
       <p>Total Price: ${reservation.totalPrice}</p>
 
       <button onClick={handleCancel} className="bg-red-500 text-white rounded-full py-2 px-4 mt-4">
-        キャンセル
+        {t('cancel')}
       </button>
     </div>
   );
 
   async function handleCancel() {
-    const res = await fetch(\`/api/reservation/${id}\`, {
+    const res = await fetch(\`/api/reservation/${reservation.id}\`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -45,29 +61,12 @@ const ReservationDetail = () => {
     });
 
     if (res.ok) {
-      alert('予約がキャンセルされました');
+      alert(t('reservation_cancelled'));
       router.push('/reservation');
     } else {
-      alert('予約のキャンセルに失敗しました');
+      alert(t('reservation_cancel_failed'));
     }
   }
-
-};
-
-export const getServerSideProps = async (context) => {
-  const { id } = context.params;
-  const res = await fetch(\\`https://api.enabler.cc/reservation/${id}\\`, {
-    headers: {
-      'Authorization': \\`Bearer ${context.req.cookies.token}\\`
-    }
-  });
-  const data = await res.json();
-
-  return {
-    props: {
-      reservation: data
-    }
-  };
 };
 
 export default ReservationDetail;

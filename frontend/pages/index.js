@@ -91,9 +91,9 @@ const Home = ({ data }) => {
             </div>
           ))}
         </div>
-      <footer className="bg-gray-800 text-white p-10 text-center">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div>
+        </div>
+      </main>
+      <footer className='bg-gray-800 text-white p-10 text-center'>
             <h3 className="text-xl font-bold mb-2">Site Map</h3>
             <ul>
               <li><a href="/" className="text-gray-400 hover:text-white">Home</a></li>

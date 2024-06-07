@@ -1,0 +1,121 @@
+
+> frontend@0.1.0 dev
+> next dev
+
+ ⚠ Port 3000 is in use, trying 3001 instead.
+  ▲ Next.js 14.2.3
+  - Local:        http://localhost:3001
+
+ ✓ Starting...
+ ✓ Ready in 1423ms
+ ○ Compiling / ...
+ ✓ Compiled / in 1454ms (287 modules)
+ ✓ Compiled in 92ms (287 modules)
+ ⨯ SyntaxError: Unexpected token H in JSON at position 0
+    at JSON.parse (<anonymous>)
+    at parseJSONFromBytes (node:internal/deps/undici/undici:6662:19)
+    at successSteps (node:internal/deps/undici/undici:6636:27)
+    at node:internal/deps/undici/undici:1236:60
+    at node:internal/process/task_queues:140:7
+    at AsyncResource.runInAsyncScope (node:async_hooks:203:9)
+    at AsyncResource.runMicrotask (node:internal/process/task_queues:137:8)
+    at process.processTicksAndRejections (node:internal/process/task_queues:95:5) {
+  page: '/'
+}
+ ✓ Compiled /_error in 46ms (289 modules)
+ GET / 500 in 1905ms
+ ⨯ ./pages/index.js
+Error: 
+  [31mx[0m Expression expected
+    ,-[[36;1;4m/workspace/EnablerStay/frontend/pages/index.js[0m:15:1]
+ [2m15[0m |   };
+ [2m16[0m | }
+ [2m17[0m | 
+ [2m18[0m | }
+    : [31;1m^[0m
+ [2m19[0m | 
+ [2m20[0m | const Home = ({ data }) => {
+ [2m21[0m |   const [searchQuery, setSearchQuery] = useState('');
+    `----
+
+Caused by:
+    Syntax Error
+ ✓ Compiled in 255ms (289 modules)
+ ✓ Compiled in 140ms (289 modules)
+ ✓ Compiled in 117ms (290 modules)
+ ✓ Compiled in 98ms (290 modules)
+ ✓ Compiled in 130ms (290 modules)
+ ✓ Compiled in 122ms (290 modules)
+ ✓ Compiled in 87ms (290 modules)
+ ✓ Compiled in 68ms (261 modules)
+ ✓ Compiled in 40ms (211 modules)
+ ✓ Compiled in 35ms (211 modules)
+ ✓ Compiled in 56ms (211 modules)
+ ✓ Compiled in 58ms (211 modules)
+ ✓ Compiled in 50ms (211 modules)
+ ✓ Compiled in 36ms (211 modules)
+ ✓ Compiled in 61ms (211 modules)
+ ✓ Compiled in 34ms (211 modules)
+ ✓ Compiled in 49ms (211 modules)
+ ✓ Compiled in 36ms (211 modules)
+ ✓ Compiled in 36ms (211 modules)
+ ✓ Compiled in 54ms (211 modules)
+ ✓ Compiled in 53ms (211 modules)
+ ✓ Compiled in 55ms (211 modules)
+ ✓ Compiled in 57ms (211 modules)
+ ✓ Compiled in 54ms (211 modules)
+ ✓ Compiled in 40ms (211 modules)
+ ✓ Compiled in 40ms (211 modules)
+ ✓ Compiled in 34ms (211 modules)
+ ✓ Compiled in 41ms (211 modules)
+ ✓ Compiled in 46ms (211 modules)
+ ✓ Compiled in 42ms (211 modules)
+ ✓ Compiled in 31ms (211 modules)
+ ✓ Compiled in 41ms (211 modules)
+ ✓ Compiled in 43ms (211 modules)
+ ✓ Compiled in 40ms (211 modules)
+ ✓ Compiled in 36ms (211 modules)
+ ✓ Compiled in 52ms (211 modules)
+ ✓ Compiled in 57ms (211 modules)
+ ✓ Compiled in 47ms (211 modules)
+ ✓ Compiled in 34ms (211 modules)
+ ✓ Compiled in 38ms (211 modules)
+ ✓ Compiled in 51ms (211 modules)
+ ✓ Compiled in 51ms (211 modules)
+ ✓ Compiled in 50ms (211 modules)
+ ✓ Compiled in 46ms (211 modules)
+ ✓ Compiled in 32ms (211 modules)
+ ✓ Compiled in 56ms (211 modules)
+ ✓ Compiled in 35ms (211 modules)
+ ✓ Compiled in 46ms (211 modules)
+ ✓ Compiled in 33ms (211 modules)
+ ✓ Compiled in 46ms (211 modules)
+ ✓ Compiled in 43ms (211 modules)
+ ✓ Compiled in 55ms (211 modules)
+ ✓ Compiled in 55ms (211 modules)
+ ✓ Compiled in 47ms (211 modules)
+ ✓ Compiled in 40ms (211 modules)
+ ✓ Compiled in 41ms (211 modules)
+ ✓ Compiled in 35ms (211 modules)
+ ✓ Compiled in 37ms (211 modules)
+ ✓ Compiled in 33ms (211 modules)
+ ✓ Compiled in 51ms (211 modules)
+ ✓ Compiled in 37ms (211 modules)
+ ✓ Compiled in 39ms (211 modules)
+ ✓ Compiled in 32ms (211 modules)
+ ✓ Compiled in 39ms (211 modules)
+ ✓ Compiled in 36ms (211 modules)
+ ✓ Compiled in 56ms (211 modules)
+ ✓ Compiled in 52ms (211 modules)
+ ✓ Compiled in 47ms (211 modules)
+ ✓ Compiled in 47ms (211 modules)
+ ✓ Compiled in 40ms (211 modules)
+ ✓ Compiled in 34ms (211 modules)
+ ✓ Compiled in 37ms (211 modules)
+ ✓ Compiled in 35ms (211 modules)
+ ✓ Compiled in 41ms (211 modules)
+ ✓ Compiled in 37ms (211 modules)
+ ✓ Compiled in 38ms (211 modules)
+ ✓ Compiled in 32ms (211 modules)
+ ✓ Compiled in 170ms (211 modules)
+ ✓ Compiled in 53ms (211 modules)

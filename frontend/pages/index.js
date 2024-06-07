@@ -51,7 +51,27 @@ const Home = ({ data }) => {
           <a href="/about" className="text-gray-600 hover:text-gray-900">About</a>
           <a href="/contact" className="text-gray-600 hover:text-gray-900">Contact</a>
         </nav>
-      </header>
+      <section className="bg-blue-500 text-white p-10 text-center">
+        <h2 className="text-4xl font-bold mb-4">Welcome to EnablerStay</h2>
+        <p className="text-lg mb-6">Find and book your perfect property with ease.</p>
+        <button className="bg-white text-blue-500 px-4 py-2 rounded-md">Get Started</button>
+      <section className="p-10 text-center">
+        <h2 className="text-3xl font-bold mb-6">Our Features</h2>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="border p-5 rounded-md shadow-md">
+            <h3 className="text-xl font-bold mb-2">Feature 1</h3>
+            <p className="text-gray-600">Description of feature 1.</p>
+          </div>
+          <div className="border p-5 rounded-md shadow-md">
+            <h3 className="text-xl font-bold mb-2">Feature 2</h3>
+            <p className="text-gray-600">Description of feature 2.</p>
+          </div>
+          <div className="border p-5 rounded-md shadow-md">
+            <h3 className="text-xl font-bold mb-2">Feature 3</h3>
+            <p className="text-gray-600">Description of feature 3.</p>
+          </div>
+        </div>
+      </section>
         <input
           type="text"
           placeholder="Search properties..."
@@ -71,7 +91,31 @@ const Home = ({ data }) => {
             </div>
           ))}
         </div>
-      </main>
+      <footer className="bg-gray-800 text-white p-10 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div>
+            <h3 className="text-xl font-bold mb-2">Site Map</h3>
+            <ul>
+              <li><a href="/" className="text-gray-400 hover:text-white">Home</a></li>
+              <li><a href="/about" className="text-gray-400 hover:text-white">About</a></li>
+              <li><a href="/contact" className="text-gray-400 hover:text-white">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2">Contact Us</h3>
+            <p className="text-gray-400">Email: info@enablerstay.com</p>
+            <p className="text-gray-400">Phone: +123 456 7890</p>
+          </div>
+          <div>
+            <h3 className="text-xl font-bold mb-2">Follow Us</h3>
+            <ul className="flex space-x-4 justify-center">
+              <li><a href="#" className="text-gray-400 hover:text-white">Facebook</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Twitter</a></li>
+              <li><a href="#" className="text-gray-400 hover:text-white">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

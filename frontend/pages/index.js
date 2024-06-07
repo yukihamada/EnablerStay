@@ -59,7 +59,7 @@ const Home = ({ data }) => {
           onChange={(e) => setSearchQuery(e.target.value)}
           className="p-2 border border-gray-300 rounded-md w-full max-w-md mt-5"
         />
-      </header>
+
       <main className="flex-grow p-5">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
           {filteredData.map((item) => (

@@ -1,6 +1,18 @@
 import React from 'react';
 import Image from 'next/image';
 
+
+const [searchQuery, setSearchQuery] = useState('');
+const [filteredData, setFilteredData] = useState(data);
+
+const handleSearch = () => {
+  const filtered = data.filter(item =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+  setFilteredData(filtered);
+};
+
+
 const Home = ({ data }) => {
   return (
     <div className="min-h-screen flex flex-col">
@@ -10,14 +22,20 @@ const Home = ({ data }) => {
           <h1 className="text-2xl font-bold">EnablerStay</h1>
         </div>
         <div className="flex items-center space-x-4">
+
           <input
             type="text"
             placeholder="検索..."
             className="border rounded-full py-2 px-4 w-64"
+
+          {filteredData.map((item, index) => (
+
+            onChange={(e) => setSearchQuery(e.target.value)}
           />
-          <button className="bg-blue-500 text-white rounded-full py-2 px-4">
+          <button className="bg-blue-500 text-white rounded-full py-2 px-4" onClick={handleSearch}>
             検索
           </button>
+
         </div>
       </header>
       <main className="flex-grow p-5 bg-gray-100">

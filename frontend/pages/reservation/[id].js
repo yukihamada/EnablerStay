@@ -29,9 +29,29 @@ const ReservationDetail = () => {
       <p>Start Date: {reservation.startDate}</p>
       <p>End Date: {reservation.endDate}</p>
       <p>Total Price: ${reservation.totalPrice}</p>
-      <p>Status: {reservation.status}</p>
+
+      <button onClick={handleCancel} className="bg-red-500 text-white rounded-full py-2 px-4 mt-4">
+        キャンセル
+      </button>
     </div>
   );
+
+  async function handleCancel() {
+    const res = await fetch(\`/api/reservation/${id}\`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (res.ok) {
+      alert('予約がキャンセルされました');
+      router.push('/reservation');
+    } else {
+      alert('予約のキャンセルに失敗しました');
+    }
+  }
+
 };
 
 export const getServerSideProps = async (context) => {

@@ -46,12 +46,18 @@ const Home = ({ data }) => {
           <Image src="/logo.png" alt="Logo" width={50} height={50} />
           <h1 className="text-2xl font-bold">EnablerStay</h1>
         </div>
+        <nav className="flex space-x-4">
+          <a href="/" className="text-gray-600 hover:text-gray-900">Home</a>
+          <a href="/about" className="text-gray-600 hover:text-gray-900">About</a>
+          <a href="/contact" className="text-gray-600 hover:text-gray-900">Contact</a>
+        </nav>
+      </header>
         <input
           type="text"
-          placeholder="Search posts..."
+          placeholder="Search properties..."
           value={searchQuery}
           onChange={(e) => setSearchQuery(e.target.value)}
-          className="p-2 border border-gray-300 rounded-md w-full max-w-md"
+          className="p-2 border border-gray-300 rounded-md w-full max-w-md mt-5"
         />
       </header>
       <main className="flex-grow p-5">
@@ -61,6 +67,7 @@ const Home = ({ data }) => {
               <Image src="/property.jpg" alt={item.title} width={300} height={200} className="rounded-md" />
               <h2 className="text-xl font-bold mt-2">{item.title}</h2>
               <p className="text-gray-600">{item.body}</p>
+              <button className="mt-2 p-2 bg-blue-500 text-white rounded-md">View Details</button>
             </div>
           ))}
         </div>

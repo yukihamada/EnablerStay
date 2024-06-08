@@ -32,7 +32,7 @@ const Home = ({ data }) => {
   const [filteredData, setFilteredData] = useState(data);
   const properties = [
     { id: 1, name: '熱海', description: '美しい海と温泉の街', image: '/images/atami.jpg', price: '¥15,000', reason: '温泉と海の絶景が楽しめます', reviews: ['素晴らしい体験でした！', 'また行きたいです。'] },
-    { id: 2, name: '京都', description: '歴史と文化の街', image: 'https://www.kyoto-machiya-inn.com/jp/wp-content/uploads/2022/02/2022_0115_0269_%E8%A3%9C%E6%AD%A3%E6%B8%88.jpg', price: '¥20,000', reason: '歴史的な観光地がたくさんあります', reviews: ['とても楽しかったです。', '文化に触れることができました。'] },
+    { id: 2, name: '京都', description: '歴史と文化の街', image: '/images/kyoto.jpg', price: '¥20,000', reason: '歴史的な観光地がたくさんあります', reviews: ['とても楽しかったです。', '文化に触れることができました。'] },
     { id: 3, name: 'ハワイ', description: '美しいビーチとリゾート', image: '/images/hawaii.jpg', price: '$200', reason: 'ビーチとリゾートでリラックスできます', reviews: ['最高のバケーションでした！', 'ビーチがとても綺麗でした。'] },
     { id: 4, name: '北海道', description: '自然と美食の地', image: '/images/hokkaido.jpg', price: '¥18,000', reason: '自然と美味しい食べ物が楽しめます', reviews: ['食べ物が美味しかったです。', '自然が素晴らしかったです。'] },
   ];
